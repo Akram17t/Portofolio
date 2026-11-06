@@ -39,6 +39,19 @@ Fluid cursor (6 November 2026): site-specific Three.js implementation, guided by
 - Additional flowmap reference reviewed: https://github.com/robin-dela/flowmap-effect
 No 3D models, imagery, screenshots, shaders or UI were copied from these demos. The project's GLSL is written for its own portrait and DOM typography. The photo is not UV-displaced; liquid behavior changes only the reveal mask and lettering.
 
+Gallery polish (6 November 2026):
+- PhotoSwipe 5.4.4, Dmitry Semenov: https://github.com/dimsemenov/PhotoSwipe (MIT); lazy-loaded image viewer with zoom, pan, keyboard and touch gestures. Licence included in public/licenses/photoswipe.txt.
+- Research: https://github.com/codrops/SlideshowAnimations (MIT) and GSAP Observer documentation. The final Work layout uses normal vertical scrolling, as requested; no slideshow code ships.
+- Visual references: https://motionsites.ai/?prompt=kairo-studio and https://motionsites.ai/?prompt=peculiar-atelier . Public preview compositions inspected; video playback was unavailable in this environment. No paid prompts, source code, videos, artwork or other assets copied. The constrained photo-drag and spring return are a local GSAP Draggable implementation.
+- Photo mounts and card borders are original CSS using the portfolio's existing palette and images.
+- public/og-image.png is a browser-rendered composition of the existing local fonts and authorised portrait.
+
+Vertical Work / Journey revision:
+- Portfolio layout references inspected: https://dennissnellenberg.com/work and https://www.seyi.dev/ . Additional editorial typography reference: https://www.niccolomiranda.com/ . No imagery, fonts, or source code copied.
+- Source research: https://github.com/oluwadareseyi/folio-v2 . Large typography and project-led composition informed the local implementation; the seven project screenshots remain the owner's original assets.
+- Additional gallery references: https://dan-ross.dev/#work and https://kaushikportfolio.com/ . The owner's final direction uses alternating text/image rows, with compact framed previews and normal vertical scrolling across all seven projects.
+- Project descriptions checked against each repository's README. Only documented personal contributions are attributed; team features are described as team scope, with no invented impact metrics.
+
 Profile and credential references (6 November 2026):
 - https://id.linkedin.com/in/nashiruddin-akram
 - https://www.credly.com/badges/a4043cae-b257-4968-a11d-d8f919d59c1d
