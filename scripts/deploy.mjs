@@ -20,7 +20,7 @@ if (!resolve(checkout).startsWith(resolve(temporary) + sep)) throw new Error('In
 try {
   git(['clone', '--depth', '1', '--single-branch', ...(branch.status === 0 ? ['--branch', 'gh-pages'] : []), remote, checkout]);
   if (branch.status === 2) git(['checkout', '--orphan', 'gh-pages'], checkout);
-  git(['rm', '-r', '--ignore-unmatch', '--', '.'], checkout);
+  git(['rm', '-r', '-f', '--ignore-unmatch', '--', '.'], checkout);
   cpSync(join(root, 'dist'), checkout, { recursive: true });
   git(['add', '--all'], checkout);
   const changed = spawnSync('git', ['diff', '--cached', '--quiet'], { cwd: checkout });
