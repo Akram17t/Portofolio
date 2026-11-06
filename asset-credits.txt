@@ -1,0 +1,50 @@
+Portfolio assets
+
+Project screenshots:
+- Judol Detector: authentic test screenshot extracted from page 52 (PDF image 239) of the team’s original report, https://github.com/Akram17t/Tubes3_Komisi-Pemberantas-Judol/blob/main/doc/Komisi%20Pemberantas%20Judol.pdf . Converted to WebP without changing the screenshot contents. Team: Hakam Avicena Mustain, Nashiruddin Akram, Amanda Aurellia Salsabilla.
+- HR Assistant: owner-supplied screenshot, Screenshot 2026-08-19 130751.png, used as requested. Source project: https://github.com/Akram17t/Internship/tree/main/Capstone
+- CommunityMap: captured with Playwright from an isolated local run of the original application, using its public seed/demo reports and MapLibre basemap. Source: https://github.com/Akram17t/CommunityMap
+- DOMichelis: captured with Playwright from https://domichelis.fun/ and its working CSS-selector search interface on 5 November 2026. Team project by Nashiruddin Akram, Reinsen Silitonga, and Arghawisesa Dwinanda Arham.
+- Wayfinder3D: original screenshot, https://github.com/Akram17t/PathFinding3D-IRK/blob/main/docs/screenshot.png
+- The Great Wrap: original screenshots, https://github.com/Akram17t/ConvexHull-IRK/tree/main/docs/screenshots
+- Colored N-Queens: captured with Playwright from the original application run locally. Source: https://github.com/Akram17t/Tucil1_13524090
+
+Personal photographs: ten owner-supplied photographs selected from the Porto folder, used at the owner’s request. Public WebP files preserve the photographs’ contents. The previous DOMichelis portrait is not displayed.
+
+Technology logos:
+- Devicon: https://github.com/devicons/devicon (MIT); brand marks belong to their respective owners.
+- Simple Icons: https://github.com/simple-icons/simple-icons (CC0); LangChain and LangGraph.
+- Lobe Icons: https://github.com/lobehub/lobe-icons (MIT); AWS and Langfuse.
+- AWS certification badges: original artwork from https://aws.amazon.com/certification/certified-solutions-architect-associate/ and https://aws.amazon.com/certification/certified-ai-practitioner/
+
+Fonts: Anton by Vernon Adams and Mona Sans by GitHub (SIL Open Font License), obtained independently from Google Fonts and stored locally. License files are included in public/fonts.
+Content: latest supplied CV, public GitHub repositories, public LinkedIn profile, and OSN participant records. The public profile was checked on 6 November 2026. Current LinkedIn date ranges are used for HMIF and the lab assistant role; degree/GPA and implementation details retain the supplied CV/repository sources.
+
+ChromaDB logo: original Chroma artwork from https://www.trychroma.com/img/favicon.ico
+
+Interactive graphics: original particle intro, rendered with Three.js (MIT). No assets, text, 3D models, or proprietary fonts were copied from the visual references.
+Visual references: https://www.arghaarham.com/ and https://landonorris.com/
+Personal photographs appear in About, menu, and Moments album. Full images and responsive 480/960px versions are stored in public/photos. Captions describe visible scenes; no unsupported dates or roles are assigned.
+
+Current hero portrait (owner-authorised, 6 November 2026):
+- Source: owner-supplied C:/Users/Akram/Downloads/Nashiruddin Akram Cinematic Portrait.png.
+- Built-in imagegen background extraction: removed the black backdrop and all lettering, reconstructed shirt fabric beneath the outlined AKRAM, retained the supplied pose and face. This is an edited image.
+- PNG master and exact prompt: output/imagegen/cinematic/. Alpha-preserving WebP assets: public/cutouts/cinematic-portrait.webp and cinematic-portrait-960.webp.
+- Headline typography and cursor interaction are rendered by the website. Reference interaction observed at https://www.arghaarham.com/; no reference-site imagery or code copied.
+The previous four cutouts were removed from the active website and archived locally in output/playwright/before-cinematic/. Owner source images remain untouched.
+
+Fluid cursor (6 November 2026): site-specific Three.js implementation, guided by the owner's two screen recordings and the fluid-mask feedback/compositing approach demonstrated in Cullen Webber's three-skull / Codrops tutorial.
+- https://github.com/cullenwebber/three-skull (README declares MIT; webgl branch inspected at 985eb741ecff1d0a0c575a1df92d464b44c3c26d).
+- https://tympanus.net/codrops/2026/03/23/building-a-dual-scene-fluid-x-ray-reveal-effect-in-three-js/
+- Additional flowmap reference reviewed: https://github.com/robin-dela/flowmap-effect
+No 3D models, imagery, screenshots, shaders or UI were copied from these demos. The project's GLSL is written for its own portrait and DOM typography. The photo is not UV-displaced; liquid behavior changes only the reveal mask and lettering.
+
+Profile and credential references (6 November 2026):
+- https://id.linkedin.com/in/nashiruddin-akram
+- https://www.credly.com/badges/a4043cae-b257-4968-a11d-d8f919d59c1d
+- https://www.credly.com/badges/2a7543d0-99a7-4b18-bbd1-55cc4cff4cb9
+- https://www.credly.com/badges/9c7f183d-4da6-4952-96f9-58e15e2ed001
+- https://www.credly.com/badges/6e2ec3a2-d890-49a9-affc-d1da28d856c0
+- https://www.credly.com/badges/cc31ae86-9e40-434c-9374-daa00c6881d4
+- https://icpc.global/ICPCID/34UEI4M0Y6WI
+- https://osn.toki.id/statistik/peserta/1469
