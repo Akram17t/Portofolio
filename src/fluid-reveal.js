@@ -127,7 +127,8 @@ export async function createFluidReveal(stage, portrait) {
     renderer.setSize(size.x,size.y,false);
     read.setSize(512,Math.max(128,Math.round(512*size.y/size.x)));
     write.setSize(read.width,read.height);
-    for(const label of labels){label.canvas.width=size.x;label.canvas.height=size.y;label.signature='';}
+    // WebGL texture storage cannot grow with its canvas; reallocate after a resize.
+    for(const label of labels){label.texture.dispose();label.canvas.width=size.x;label.canvas.height=size.y;label.texture.needsUpdate=true;label.signature='';}
     pointer=null;lastMove=-Infinity;clear();
   };
   const drawLabels = bounds => {

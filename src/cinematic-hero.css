@@ -17,8 +17,6 @@ html[data-motion] .portrait-selected .hero-portrait img,html[data-motion] .portr
 .hero-portrait:focus-visible img{opacity:1!important}
 .hero-bottom{z-index:5;bottom:28px;align-items:center;gap:24px;pointer-events:none}
 .hero-bottom a{pointer-events:auto}
-.hero-role{font-size:16px;margin-bottom:4px}
-.hero-copy>p+p{font-size:14px}
 @media(max-width:999px){
   .hero-stage{min-height:700px}
   .hero-title .name-top{top:140px;font-size:20vw}
@@ -36,8 +34,6 @@ html[data-motion] .portrait-selected .hero-portrait img,html[data-motion] .portr
   .hero-title .name-bottom{bottom:240px;inset-inline:4%;font-size:35vw;-webkit-text-stroke:1px var(--portrait-type)}
   .hero-portrait{bottom:240px;left:-65%;width:230%}
   .hero-bottom{bottom:32px}
-  .hero-role{font-size:15px;max-width:300px}
-  .hero-copy>p+p{font-size:13px}
   .hero-cta{margin-top:16px}
 }
 @media(min-width:1000px) and (max-height:700px){
@@ -45,8 +41,6 @@ html[data-motion] .portrait-selected .hero-portrait img,html[data-motion] .portr
   .hero-title .name-top{top:85px;font-size:13vw}
   .hero-title .name-bottom{top:auto;bottom:110px;font-size:17vw}
   .hero-bottom{bottom:20px}
-  .hero-role{font-size:15px}
-  .hero-copy>p+p{font-size:13px}
 }
 @media(max-width:999px) and (max-height:740px){
   .hero-stage{min-height:620px}

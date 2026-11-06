@@ -9,7 +9,24 @@ npm ci
 npm run dev
 ```
 
-The active entry files are the root `index.html`, `main.js` and `style.css`. The interactive hero, photo album, timeline and entrance modules are in `src/`. Website images, local fonts, logos and the downloadable CV are in `public/`.
+The active entry files are the root `index.html`, `main.js` and `style.css`. The hero, photo album, vertical journey and entrance modules are in `src/`; `layout.css` and `work-journey.css` hold the current layout. Website images, local fonts, logos and the downloadable CV are in `public/`.
+
+Selected Work displays all seven projects as compact alternating rows: text on the left and screenshot on the right, then reversed for the next project. Phones stack the screenshot above its description. Every project has source links and expandable build details with documented contributions. Journey uses a sticky year and scroll-activated milestones, with normal vertical scrolling on every device. Reduced motion keeps all content readable without pinned scenes or animated reveals. The entrance scroll distance is half the previous version.
+
+PhotoSwipe loads on the first image click and supplies zoom, pan, keyboard navigation and touch swiping. A native image dialog remains available if its chunk fails to load. Desktop Moments photos can be dragged within a small range and spring back; reduced motion and touch keep the normal photo buttons. Three.js loads only for the entrance or the desktop fluid effect.
+
+Development builds report Core Web Vitals in the browser's debug console through `web-vitals`; no visitor data is transmitted. Production builds omit this instrumentation.
+
+## Verify the UI
+
+Build and run `npm run preview -- --host 127.0.0.1` in another terminal, then:
+
+```sh
+npx --yes --package @playwright/cli playwright-cli -s=portfolio-check open http://127.0.0.1:4173/#hero
+npx --yes --package @playwright/cli playwright-cli -s=portfolio-check run-code --filename scripts/verify-ui.js
+```
+
+The checks cover all seven visible projects, section order, journey activation, removed hero copy/stats, photo dragging and zoom, keyboard/focus restoration, touch swiping, reduced motion, responsive layout, GPU resizing, and the native viewer fallback.
 
 ## Publish to GitHub Pages
 
