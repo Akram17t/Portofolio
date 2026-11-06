@@ -52,6 +52,11 @@ Vertical Work / Journey revision:
 - Additional gallery references: https://dan-ross.dev/#work and https://kaushikportfolio.com/ . The owner's final direction uses alternating text/image rows, with compact framed previews and normal vertical scrolling across all seven projects.
 - Project descriptions checked against each repository's README. Only documented personal contributions are attributed; team features are described as team scope, with no invented impact metrics.
 
+Additional motion research (6 November 2026):
+- https://motionsites.ai/?prompt=orvante-agency : public preview inspected at multiple playback times for masked type, sequenced reveals and progressive text emphasis.
+- https://motionsites.ai/?prompt=personal-showcase : public preview inspected for layered portrait/type motion. No preview media, prompts or source code are shipped in this portfolio.
+- Project entrance masks, staggered descriptions, credential badge entrances, photo reveals and rolling-letter hover treatment are local GSAP/CSS implementations using existing dependencies.
+
 Profile and credential references (6 November 2026):
 - https://id.linkedin.com/in/nashiruddin-akram
 - https://www.credly.com/badges/a4043cae-b257-4968-a11d-d8f919d59c1d

@@ -279,12 +279,14 @@ html[data-motion="off"] *,html[data-motion="off"] *::before,html[data-motion="of
 .navigation-dialog::backdrop{background:#171b12}
 @media (max-width:1100px){.menu-project-preview{height:220px}
 .menu-shot:last-child{top:58px}}
-.rolling-link{position:relative;display:inline-flex;vertical-align:bottom;overflow:visible}
-.rolling-link>.roll-label{position:relative;display:block;overflow:clip;line-height:1.5}
-.rolling-link .roll-original{display:block}
-.rolling-link .link-echo{position:absolute;top:100%;left:0;white-space:nowrap;pointer-events:none}
-.roll-character{display:inline-block;white-space:pre;transition:transform 550ms var(--ease);transition-delay:calc(var(--char) * 16ms)}
-.rolling-link:hover .roll-character,.rolling-link:focus-visible .roll-character{transform:translateY(-100%)}
+.rolling-link{position:relative;display:inline-flex;align-items:center;vertical-align:bottom;overflow:visible}
+.rolling-type{position:relative;overflow:visible}
+:is(.rolling-link,.rolling-type)>.roll-label{position:relative;display:block;overflow:clip;line-height:1.5;max-width:100%}
+.rolling-type>.roll-label{line-height:1.15;width:max-content}
+:is(.rolling-link,.rolling-type) .roll-original{display:flex}
+:is(.rolling-link,.rolling-type) .link-echo{position:absolute;display:flex;top:100%;left:0;white-space:nowrap;pointer-events:none}
+.roll-character{display:block;flex:0 0 auto;white-space:pre;transition:transform 550ms var(--ease);transition-delay:calc(var(--char) * 16ms)}
+:is(.rolling-link,.rolling-type):hover .roll-character,.rolling-link:focus-visible .roll-character{transform:translateY(-100%)}
 .navigation .roll-label{line-height:1.1}
 html[data-motion="off"] .roll-character{transform:none!important}
 @media (max-width:540px){.roll-character{transition-delay:calc(var(--char) * 10ms)}}

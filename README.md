@@ -15,6 +15,8 @@ Selected Work displays all seven projects as compact alternating rows: text on t
 
 PhotoSwipe loads on the first image click and supplies zoom, pan, keyboard navigation and touch swiping. A native image dialog remains available if its chunk fails to load. Desktop Moments photos can be dragged within a small range and spring back; reduced motion and touch keep the normal photo buttons. Three.js loads only for the entrance or the desktop fluid effect.
 
+Each project enters with a masked screenshot and staggered description. About, credentials, Toolkit, Memories and Contact have section-specific reveals; Journey keeps its active milestones and transitions between years. The email's rolling-letter interaction also appears on project titles, source links, text links and Toolkit filters/headings. Hover replacements share the original baseline, including the footer social links. All movement respects reduced motion.
+
 Development builds report Core Web Vitals in the browser's debug console through `web-vitals`; no visitor data is transmitted. Production builds omit this instrumentation.
 
 ## Verify the UI
@@ -24,6 +26,7 @@ Build and run `npm run preview -- --host 127.0.0.1` in another terminal, then:
 ```sh
 npx --yes --package @playwright/cli playwright-cli -s=portfolio-check open http://127.0.0.1:4173/#hero
 npx --yes --package @playwright/cli playwright-cli -s=portfolio-check run-code --filename scripts/verify-ui.js
+npx --yes --package @playwright/cli playwright-cli -s=portfolio-check run-code --filename scripts/verify-motion.js
 ```
 
 The checks cover all seven visible projects, section order, journey activation, removed hero copy/stats, photo dragging and zoom, keyboard/focus restoration, touch swiping, reduced motion, responsive layout, GPU resizing, and the native viewer fallback.

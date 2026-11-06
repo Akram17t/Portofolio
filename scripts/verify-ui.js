@@ -119,9 +119,18 @@ async page => {
       await page.waitForTimeout(1100);
       check(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), `${width}px ${section}: no horizontal page overflow`);
       if (section === 'projects' || section === 'experience') {
+        // Measure final layout; offscreen projects intentionally start with a translated entrance.
+        if (section === 'projects') {
+          await page.emulateMedia({ reducedMotion: 'reduce' });
+          await page.waitForFunction(() => document.documentElement.dataset.motion === 'off');
+        }
         const selector = section === 'projects' ? '.project-panel' : '.timeline-stop';
         check(await page.locator(selector).evaluateAll(els => els.every((el,i) => els.slice(i+1).every(other => { const a=el.getBoundingClientRect(), b=other.getBoundingClientRect(); return a.right<=b.left+1 || b.right<=a.left+1 || a.bottom<=b.top+1 || b.bottom<=a.top+1; }))), `${width}px ${section}: entries do not overlap`);
         check(await page.locator(selector).evaluateAll(els => els.every(el => [...el.querySelectorAll('h3,p')].every(child => child.getBoundingClientRect().right <= el.getBoundingClientRect().right + 1))), `${width}px ${section}: titles and copy fit inside each entry`);
+        if (section === 'projects') {
+          await page.emulateMedia({ reducedMotion: 'no-preference' });
+          await page.waitForFunction(() => document.documentElement.dataset.motion === 'on');
+        }
       }
 
     }
@@ -175,6 +184,6 @@ async page => {
   await phone.locator('.portfolio-viewer').waitFor({ state: 'detached' });
   check(!await phone.locator('main').evaluate(el => el.inert), 'Touch close restores scrolling');
   await touchContext.close();
-  check(errors.length === 0, 'No runtime errors in tested interaction flows');
+  check(errors.length === 0, 'No runtime errors in tested interaction flows' + (errors.length ? ': ' + errors.join('; ') : ''));
   return { passed, errors, gpuWarnings };
 }

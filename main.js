@@ -65,16 +65,15 @@ document.querySelectorAll('.hero-title,[data-lines]').forEach(heading => {
   });
 });
 
-document.querySelectorAll('.rolling-link,.navigation a').forEach(link => {
-  link.classList.add('rolling-link');
+document.querySelectorAll('.rolling-link,.navigation a,.text-link,.project-links a,.stack-filters button,.project-heading h3,.stack-group h3').forEach(link => {
+  link.classList.add(link.matches('a,button') ? 'rolling-link' : 'rolling-type');
   if (!link.hasAttribute('aria-label')) link.setAttribute('aria-label', link.textContent.replace(/[↗↘]/g, '').trim());
-  let label = link.firstElementChild;
+  let label = [...link.children].find(child => child.tagName === 'SPAN' && !child.hasAttribute('aria-hidden'));
   if (!label) {
     label = document.createElement('span');
-    label.textContent = link.textContent;
-    link.replaceChildren(label);
+    [...link.childNodes].filter(node => node.nodeType === Node.TEXT_NODE).forEach(node => label.append(node));
+    link.prepend(label);
   }
-  if (!label) return;
   const original = document.createElement('span');
   original.className = 'roll-original';
   [...label.textContent].forEach((character, index) => {
@@ -477,9 +476,17 @@ function scrollChoreography() {
     gsap.fromTo(group.querySelector('h3'), { x: () => (index % 2 ? 1 : -1) * travel() }, { x: 0, ease: 'none', scrollTrigger: scrub(group, 'top 95%', 'top 55%') });
     gsap.fromTo(group.querySelectorAll('.logo-list li'), { y: 44, rotation: i => i % 2 ? 9 : -9, opacity: .4 }, { y: 0, rotation: 0, opacity: 1, stagger: .06, ease: 'none', scrollTrigger: scrub(group, 'top 95%', 'top 45%') });
   });
-  document.querySelectorAll('.certification,.award').forEach(row => {
+  document.querySelectorAll('.certification').forEach((row, index) => {
+    const entrance = gsap.timeline({ scrollTrigger: { trigger: row, start: 'top 91%', once: true }, defaults: { ease: 'power3.out' } })
+      .from(row, { x: index % 2 ? 24 : -24, opacity: .45, duration: .7, clearProps: 'transform,opacity' }, 0)
+      .from(row.querySelector('.cert-badge'), { scale: .8, rotation: -8, duration: .85, clearProps: 'transform' }, .05)
+      .from(row.querySelector('.cert-info'), { y: 18, opacity: .4, duration: .65, clearProps: 'transform,opacity' }, .1);
+    entrance.scrollTrigger.refresh();
+  });
+  document.querySelectorAll('.award').forEach(row => {
     gsap.fromTo(row, { y: 18, opacity: .45 }, { y: 0, opacity: 1, ease: 'none', scrollTrigger: scrub(row, 'top 99%', 'top 88%') });
   });
+  gsap.from('.about-copy>p:not(.about-statement),.about-copy>.text-link', { y: 24, opacity: .4, duration: .8, stagger: .09, ease: 'power3.out', clearProps: 'transform,opacity', scrollTrigger: { trigger: '.about-copy', start: 'top 87%', once: true } });
   gsap.fromTo('.contact-copy', { y: 44 }, { y: 0, ease: 'none', scrollTrigger: scrub('.contact-top', 'top 90%', 'top 40%') });
   gsap.fromTo('.contact-email', { x: () => -travel() }, { x: 0, ease: 'none', scrollTrigger: scrub('.contact-email', 'top 98%', 'top 65%') });
   gsap.fromTo('.contact-links', { y: 25 }, { y: 0, ease: 'none', scrollTrigger: scrub('.contact-links', 'top 98%', 'top 70%') });
@@ -488,6 +495,8 @@ function scrollChoreography() {
 function applyMotion() {
   motionEnabled = !reducedMotion.matches;
   animationContext?.revert();
+  gsap.killTweensOf('.journey-year');
+  gsap.set('.journey-year', { clearProps: 'transform,opacity' });
   cleanScenes();
   cleanPointerMotion();
   lenis?.destroy();
@@ -502,12 +511,12 @@ function applyMotion() {
     gsap.ticker.add(ticker);
     if (introActive || menu.open || viewerOpen) lenis.stop();
   }
-  animationContext = gsap.context(() => {
+  animationContext = gsap.context(context => {
     cleanScenes = buildScrollScenes();
     buildJourney();
     document.querySelectorAll('[data-lines]').forEach(element => {
       if (element.getBoundingClientRect().top < innerHeight * .9) return;
-      gsap.from(element.querySelectorAll('.title-glyph'), { yPercent: 110, rotation: 3, stagger: .025, ease: 'none', scrollTrigger: { trigger: element, start: 'top 92%', end: 'top 48%', scrub: .6 } });
+      gsap.from(element.querySelectorAll('.title-glyph'), { yPercent: 110, rotation: 3, stagger: { amount: .35 }, ease: 'none', scrollTrigger: { trigger: element, start: 'top 92%', end: 'top 48%', scrub: .6 } });
     });
     document.querySelectorAll('[data-reveal]:not(.certification):not(.award),.stack-group').forEach(element => {
       if (element.getBoundingClientRect().top < innerHeight * .9) return;
@@ -516,13 +525,18 @@ function applyMotion() {
     });
     const words = document.querySelectorAll('.ink-word');
     gsap.fromTo(words, { opacity: .45 }, { opacity: 1, stagger: .05, ease: 'none', scrollTrigger: { trigger: '.about-statement', start: 'top 90%', end: 'bottom 45%', scrub: true } });
-    document.querySelectorAll('.project-panel').forEach(panel => {
-      gsap.from(panel, { y: 24, opacity: .6, duration: .8, ease: 'power3.out', clearProps: 'transform,opacity',
-        scrollTrigger: { trigger: panel, start: 'top 94%', once: true },
-      });
-      gsap.fromTo(panel.querySelector('.image-button'), { clipPath: 'inset(5% 0% 5% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', ease: 'none',
-        scrollTrigger: { trigger: panel.querySelector('.project-media'), start: 'top 94%', end: 'top 40%', scrub: .6 },
-      });
+    document.querySelectorAll('.project-panel').forEach((panel, index) => {
+      const media = panel.querySelector('.project-media');
+      const copy = panel.querySelector('.project-content');
+      const entrance = gsap.timeline({ scrollTrigger: { trigger: panel, start: 'top 86%', once: true }, defaults: { ease: 'power3.out', clearProps: 'transform,opacity,clipPath' } })
+        .from(media, { clipPath: 'inset(0% 0% 100% 0%)', y: 28, duration: .95, ease: 'power3.inOut' }, 0)
+        .from(copy.children, { x: innerWidth > 680 ? (index % 2 ? 28 : -28) : 0, y: innerWidth > 680 ? 0 : 18, opacity: .3, duration: .75, stagger: .09 }, .12);
+      // Initialise before another trigger refreshes it recursively after a deep link or resize.
+      entrance.scrollTrigger.refresh();
+      // Keyboard users can reach a preview before its scroll entrance completes.
+      const revealFocusedProject = () => entrance.progress(1);
+      panel.addEventListener('focusin', revealFocusedProject);
+      context.add(() => () => panel.removeEventListener('focusin', revealFocusedProject));
     });
     scrollChoreography();
     gsap.fromTo('.footer-wordmark', { yPercent: 30 }, { yPercent: 0, ease: 'none', scrollTrigger: { trigger: '.contact', start: 'top 80%', end: 'bottom bottom', scrub: true } });
